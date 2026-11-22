@@ -1,0 +1,27 @@
+{
+  "mockBaseUrl": "http://127.0.0.1:3100",
+  "demoqaBaseUrl": "https://demoqa.com",
+  "mock": {
+    "healthPath": "/health",
+    "loginPath": "/api/v1/auth/login",
+    "currentUserPath": "/api/v1/users/current-user",
+    "expectedLoginStatus": 200,
+    "expectedUserStatus": 200,
+    "maxResponseTimeMs": 5000
+  },
+  "demoqa": {
+    "booksPath": "/BookStore/v1/Books",
+    "createUserPath": "/Account/v1/User",
+    "generateTokenPath": "/Account/v1/GenerateToken",
+    "updateUserPath": "/Account/v1/User/test",
+    "expectedBooksStatus": 200,
+    "expectedCreateStatus": 201,
+    "expectedTokenStatus": 200,
+    "expectedUpdateStatus": 200,
+    "expectedDeleteStatus": 204,
+    "expectedBookTitle": "Git Pocket Guide",
+    "updatedUserName": "updatedUser",
+    "passwordSuffix": "@",
+    "maxResponseTimeMs": 15000
+  }
+}
