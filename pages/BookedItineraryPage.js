@@ -12,15 +12,14 @@ class BookedItineraryPage extends BasePage {
 
   async searchOrder(orderId) {
     await this.orderIdSearch.fill(orderId);
+    const responsePromise = this.page.waitForResponse(
+      (response) => response.url().includes('BookedItinerary.php') && response.request().method() === 'POST',
+      { timeout: 90000 }
+    );
     await this.page.evaluate(() => document.getElementById('search_hotel_id').click());
-    for (let i = 0; i < 15; i++) {
-      try {
-        return await this.page.evaluate((id) => [...document.querySelectorAll('input[name^="order_id_"]')].some((e) => e.value === id), orderId);
-      } catch {
-        await this.page.waitForTimeout(1000);
-      }
-    }
-    return false;
+    const response = await responsePromise;
+    const body = await response.text();
+    return body.includes(`value="${orderId}"`);
   }
 
   async orderCount() {

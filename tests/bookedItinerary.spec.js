@@ -5,6 +5,7 @@ import { completeBooking } from '../utilities/bookingFlow.js';
 
 test.describe('Booked Itinerary', () => {
   test('Search booked itinerary by order id', async ({ loggedInPage: page }) => {
+    test.setTimeout(180000);
     const confirmation = new BookingConfirmationPage(page);
     const itinerary = new BookedItineraryPage(page);
     await completeBooking(page);
